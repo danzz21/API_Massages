@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get(from: '/', to: 'Home::index');
 $routes->group(name: 'api', params: function($routes): void {
     $routes->get('messages','api::index');
+    $routes->get('messages/(:num)','api::show/$1');
+    $routes->put('messages/(:num)','api::update/$1');
     $routes->post('messages','api::create');
 
 
@@ -20,5 +22,5 @@ $routes->group(name: 'api', params: function($routes): void {
             ->setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With')
             ->setStatusCode(200);
     });
-    
+
 });
